@@ -32,6 +32,8 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
            
             	$_SESSION['user_name'] = $row['admin_username'];
             	$_SESSION['name'] = $row['admin_first'];
+				$_SESSION['last_name'] = $row['admin_last'];
+				$_SESSION['profile_image']= $row['admin_img'];
             	
             	header("Location: admin_dashboard.php");
 		        exit();

@@ -86,3 +86,26 @@ body{
     padding: 1.3rem;
     background-color:  #DC6B19;
 }
+
+.admin-dashboard-buttons{
+    margin: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: #4e4e4e;
+    background-color: #DC6B19;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-size: x-large;
+    font-weight: 700;
+}
+.admin-dashboard-buttons:hover{
+    background-color: #dc6a198c;
+}
+
+.profile-image{
+    max-height: 15rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+}

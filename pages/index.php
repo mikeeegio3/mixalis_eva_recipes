@@ -32,7 +32,7 @@
   <!-- arxh navbar -->
   <nav class="navbar navbar-expand-sm sticky-top navbar-dark">
     <div class="container">
-      <a class="navbar-brand fs-2" href="index.php"><i class="fa-solid fa-burger"></i> Foodini</a>
+      <a class="navbar-brand fs-2" href="index.php"><img src="../images/logo/logo2.png" alt="" srcset="" style="max-width: 2.5rem; padding:0%; margin:0%" class=" mb-1"> Foodini</a>
       <!-- koubi gia dropdown otan mikrainei to parathuro -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
