@@ -37,10 +37,10 @@ if (isset($_SESSION['name']) && isset($_SESSION['user_name'])) {
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="faghta.php">Φαγητά</a>
+              <a class="nav-link" href="faghta_kai_glyka.php?category=Αλμυρό">Φαγητά</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="glyka.php">Γλυκά</a>
+              <a class="nav-link" href="faghta_kai_glyka.php?category=Γλυκό">Γλυκά</a>
             </li>
           </ul>
         </div>

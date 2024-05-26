@@ -44,14 +44,28 @@
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="faghta.php">Φαγητά</a>
+            <a class="nav-link" href="faghta_kai_glyka.php?category=Αλμυρό">Φαγητά</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="glyka.php">Γλυκά</a>
+            <a class="nav-link" href="faghta_kai_glyka.php?category=Γλυκό">Γλυκά</a>
           </li>
         </ul>
+
       </div>
     </div>
+    <ul class="navbar-nav mx-4">
+      <li class="admin-login">
+        <?php
+        session_start();
+        if (isset($_SESSION['name']) && isset($_SESSION['user_name'])) {
+
+          echo "<a href='admin_dashboard.php' class='admin-login'>" . $_SESSION['name'] . " <i class='fa-solid fa-arrow-right-to-bracket'></i></a>";
+        } else {
+          echo "<a href='admin_dashboard.php' class='admin-login'> Admin Login <i class='fa-solid fa-arrow-right-to-bracket'></i></a>";
+        }
+        ?>
+      </li>
+    </ul>
   </nav>
   <!-- telos navbar -->
 
@@ -102,17 +116,17 @@
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
       <ol class="breadcrumb">
 
-        
+
         <!-- php gia responsive onoma breadcrumb -->
         <?php
         include "connect_db.php";
         $recipe_info_sql = "SELECT * FROM recipes WHERE recipe_id = $recipe_id";
         $recipe = mysqli_query($conn, $recipe_info_sql);
         $row = mysqli_fetch_assoc($recipe);
-        if($row['category'] == "Αλμυρό"){
-          echo "<li class='breadcrumb-item'><a href='faghta.php' class='text-reset'>Φαγητά</a></li>";
-        }else{
-          echo "<li class='breadcrumb-item'><a href='glyka.php' class='text-reset'>Γλυκά</a></li>";
+        if ($row['category'] == "Αλμυρό") {
+          echo "<li class='breadcrumb-item'><a href='faghta_kai_glyka.php?category=Αλμυρό' class='text-reset'>Φαγητά</a></li>";
+        } else {
+          echo "<li class='breadcrumb-item'><a href='faghta_kai_glyka.php?category=Γλυκό' class='text-reset'>Γλυκά</a></li>";
         }
 
 
@@ -131,7 +145,7 @@
     <!-- ftiaxnw ena row me 3 col -->
     <div class="container-fluid row  py-3 rounded" style="background-color: #F7C566; ">
 
-      <div class="col-lg-2 p-3" >
+      <div class="col-lg-2 p-3">
         <div class="container-fluid rounded py-3" style="background-color: #FFF8DC;">
           <div class="container">
             <h2 class="text-center">Υλικα</h2>
@@ -164,23 +178,23 @@
         </div>
 
       </div>
-      <div class="col-lg-10 text-center p-3 px-5" >
-      <div class="container-fluid rounded text-center py-3 px-5 h-100" style="background-color: #FFF8DC;">
-         <?php
-        include "connect_db.php";
-        $recipe_info_sql = "SELECT * FROM recipes WHERE recipe_id = $recipe_id";
-        $recipe = mysqli_query($conn, $recipe_info_sql);
-        $row = mysqli_fetch_assoc($recipe);
+      <div class="col-lg-10 text-center p-3 px-5">
+        <div class="container-fluid rounded text-center py-3 px-5 h-100" style="background-color: #FFF8DC;">
+          <?php
+          include "connect_db.php";
+          $recipe_info_sql = "SELECT * FROM recipes WHERE recipe_id = $recipe_id";
+          $recipe = mysqli_query($conn, $recipe_info_sql);
+          $row = mysqli_fetch_assoc($recipe);
 
-        echo "
+          echo "
       <h2 class='mb-5'>Περιγραφή</h2>
         <p>" . $row['description'] . "</p>
       ";
-        ?>
-      </div>
+          ?>
+        </div>
 
 
-       
+
 
 
       </div>

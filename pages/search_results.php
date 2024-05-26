@@ -13,7 +13,7 @@
 </head>
 
 <body class="d-flex flex-column ">
-  
+
 
 
   <!-- arxh navbar -->
@@ -26,18 +26,32 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item ">
+          <li class="nav-item active">
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="faghta.php">Φαγητά</a>
+            <a class="nav-link" href="faghta_kai_glyka.php?category=Αλμυρό">Φαγητά</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="glyka.php">Γλυκά</a>
+          <li class="nav-item">
+            <a class="nav-link" href="faghta_kai_glyka.php?category=Γλυκό">Γλυκά</a>
           </li>
         </ul>
+
       </div>
     </div>
+    <ul class="navbar-nav mx-4">
+      <li class="admin-login">
+        <?php
+        session_start();
+        if (isset($_SESSION['name']) && isset($_SESSION['user_name'])) {
+
+          echo "<a href='admin_dashboard.php' class='admin-login'>" . $_SESSION['name'] . " <i class='fa-solid fa-arrow-right-to-bracket'></i></a>";
+        } else {
+          echo "<a href='admin_dashboard.php' class='admin-login'> Admin Login <i class='fa-solid fa-arrow-right-to-bracket'></i></a>";
+        }
+        ?>
+      </li>
+    </ul>
   </nav>
   <!-- telos navbar -->
 
@@ -48,8 +62,8 @@
     $search_thing = $_GET["search"];
     echo "<h1 class='mb-3'>Αποτελέσματα αναζήτησης</h1>";
     ?>
-  
-    
+
+
     <p>Πόνος μη μας έρθει μακάρι. Πέφτω και κυλιέμαι σα ζάρι. Κάνω πως ξεχνάω τ' όνομα σου. Κι όλα αλλάζουν γύρω μου απότομα. Ο άνεμος για πού θα μας πάρει;
       Πέφτω και κυλιέμαι σα ζάρι. Κάνω πως ξεχνάω τ' άρωμα σου. Κι όλα αλλάζουν γύρω μου
     </p>
@@ -61,11 +75,16 @@
   <!-- arxh midsection -->
   <section class="container-fluid  p-5">
 
-  <?php
-    $search_thing = $_GET["search"];
-    echo "<h2 class='text-center my-5'>Συνταγές με: ".$search_thing."</h1>";
+    <?php
+    if($_GET["search"] !=""){
+      $search_thing = $_GET["search"];
+          echo "<h2 class='text-center my-5'>Συνταγές με: " . $search_thing . "</h1>";
+    }else{
+      echo "<h2 class='text-center my-5'>Συνταγές με: 🤔</h1>";
+    }
+   
     ?>
-    
+
     <div class="container rounded syntages-container">
       <div class="row">
         <div class="col-lg-12 p-4">
@@ -75,19 +94,20 @@
 
 
             <?php
-              include "connect_db.php";
+            include "connect_db.php";
+            if($_GET["search"] !=""){
               $search_thing = $_GET["search"];
 
-              $find_recipe_with_id_sql = "SELECT * FROM recipes WHERE title LIKE '%$search_thing%'";
-              
-              
-              $recipe = mysqli_query($conn, $find_recipe_with_id_sql);
-              $result_number = mysqli_num_rows($recipe);
+            $find_recipe_with_id_sql = "SELECT * FROM recipes WHERE title LIKE '%$search_thing%'";
 
-              if($result_number==0){
-                echo "<h5>Δεν υπαρχουν συνταγές με: " . $search_thing . "</h5>";
-              }else{
-                while ($recipe_fetch = mysqli_fetch_assoc($recipe)) {
+
+            $recipe = mysqli_query($conn, $find_recipe_with_id_sql);
+            $result_number = mysqli_num_rows($recipe);
+
+            if ($result_number == 0) {
+              echo "<h5>Δεν υπαρχουν συνταγές με: " . $search_thing . "</h5>";
+            } else {
+              while ($recipe_fetch = mysqli_fetch_assoc($recipe)) {
 
                 echo "
                 <a href='recepie_info.php?recipe_id=" . $recipe_fetch['recipe_id'] . "' style='text-decoration: none;'>
@@ -108,10 +128,14 @@
                 </a>
                 ";
               };
-              }
-             
-              
+            }
+            }else{
+              echo "<h5>anazhthse kati valid glykoulh</h5>";
+            }
             
+
+
+
 
             ?>
 

@@ -64,3 +64,25 @@ body{
 .admin-form{
     background-color: #FFF8DC;
 }
+
+/* afairei text decoration apo to login sto navbar  */
+.admin-login{
+    color: #ffffff7a;
+    text-decoration: none;
+   
+}
+
+.logout-button{
+    font-size: x-large;
+    color: rgb(110, 110, 110);
+}
+
+.last-added-button{
+    color: #000000;
+    text-decoration: none;
+    font-size: x-large;
+    
+    border-radius: 1rem;
+    padding: 1.3rem;
+    background-color:  #DC6B19;
+}

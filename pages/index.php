@@ -43,10 +43,10 @@
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="faghta.php">Φαγητά</a>
+            <a class="nav-link" href="faghta_kai_glyka.php?category=Αλμυρό">Φαγητά</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="glyka.php">Γλυκά</a>
+            <a class="nav-link" href="faghta_kai_glyka.php?category=Γλυκό">Γλυκά</a>
           </li>
         </ul>
         
@@ -54,7 +54,16 @@
     </div>
     <ul class="navbar-nav mx-4">
           <li class="admin-login">
-           <a href="admin_login.php" class="admin-login"> Admin Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+            <?php
+            session_start();
+              if (isset($_SESSION['name']) && isset($_SESSION['user_name'])) {
+              
+              echo "<a href='admin_dashboard.php' class='admin-login'>".$_SESSION['name']." <i class='fa-solid fa-arrow-right-to-bracket'></i></a>";
+                
+            } else {
+                echo "<a href='admin_dashboard.php' class='admin-login'> Admin Login <i class='fa-solid fa-arrow-right-to-bracket'></i></a>";
+            }
+            ?>
           </li>
         </ul>
   </nav>
@@ -147,7 +156,7 @@
 
             <div class="card-body overflow-hidden p-0" style="box-shadow: 2px 2px 3px 1px rgb(112, 112, 112); border-radius: 10px;">
               <img src="../images/home_cards/almira.jpg" class="card-img-top card-img-bottom" alt="...">
-              <a href="faghta.php">
+              <a href="faghta_kai_glyka.php?category=Αλμυρό">
                 <div class="overlay">
                   <h3>Φαγητά</h3>
                   <p>Οι Συνταγές φαγητών μας</p>
@@ -162,7 +171,7 @@
 
             <div class="card-body overflow-hidden p-0" style="box-shadow: 2px 2px 3px 1px rgb(112, 112, 112); border-radius: 10px;">
               <img src="../images/home_cards/glyka.jpg" class="card-img-top card-img-bottom" alt="...">
-              <a href="glyka.php">
+              <a href="faghta_kai_glyka.php?category=Γλυκό">
                 <div class="overlay">
                   <h3>Γλυκά</h3>
                   <p>Οι Γλυκίες μας Συνταγές</p>
