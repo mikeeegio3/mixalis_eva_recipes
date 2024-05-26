@@ -74,7 +74,7 @@
             <div class="container w-75 p-5 admin-form rounded">
                 <?php
                 // emfanizei tis teleutaies 3 syntages
-                    require "../require/recipe_card.php";
+                    require "../require/recipe_card_for_edit.php";
                     require "connect_db.php";
                     $entry_number_sql = "SELECT * FROM recipes";
                     $entry_number_querry = mysqli_query($conn, $entry_number_sql);
